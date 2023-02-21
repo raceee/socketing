@@ -8,8 +8,8 @@ print("UDP target port: %s" % UDP_PORT)
 
 sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
-
+MESSAGE = 0
 while True:
-    MESSAGE = 0
-    sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+    m = str(MESSAGE).encode('utf-8')
+    sock.sendto(m, (UDP_IP, UDP_PORT))
     MESSAGE += 1
