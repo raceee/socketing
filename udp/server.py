@@ -1,8 +1,12 @@
 import socket
-buffer_size = 1024
-UPDServer = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-UPDServer.bind((socket.gethostname(), 9998))
+
+UDP_IP = "127.0.0.1"
+UDP_PORT = 5005
+
+sock = socket.socket(socket.AF_INET, # Internet
+                     socket.SOCK_DGRAM) # UDP
+sock.bind((UDP_IP, UDP_PORT))
 
 while True:
-    print("UDP Server is up.")
-    message, address = UPDServer.recvfrom(buffer_size)
+    data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+    print("received message: %s" % data)
